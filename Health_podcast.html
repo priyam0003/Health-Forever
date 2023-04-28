@@ -1,0 +1,285 @@
+<html>
+
+<head>
+  <title>Podcast</title>
+  <style>
+    body {
+      background-attachment: scroll;
+      background-color: whitesmoke;
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 10;
+    }
+
+    nav a {
+      color: #fff;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: auto;
+      margin-top: 50px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    input[type=text] {
+      padding: 10px;
+      margin-right: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+    }
+
+    button[type=submit] {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: grey;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button[type=submit]:hover {
+      background-color: #3e8e41;
+    }
+
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .card {
+      width: 30%;
+      margin-bottom: 50px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      padding: 10px;
+      margin: 10px;
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    .card p {
+      margin: 10px;
+      padding: 10px;
+      font-size: 1em;
+      line-height: 1.4em;
+      text-align: left;
+    }
+
+    footer {
+      background-color: whitesmoke;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropbtn {
+      color: #fff;
+      background-color: #333;
+      border: none;
+      padding: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      background-color: #f2f2f2;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      padding: 6px 0;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>PODCAST</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">HOME</a>
+      <a href="{{ url_for('Health_podcast') }}">PODCAST</a>
+
+      <div class="dropdown">
+        <button class="dropbtn">RECIPES &#9662;</button>
+        <div class="dropdown-content">
+          <a href="{{ url_for('Healthy_Recipes') }}#breakfast">Breakfast</a>
+
+          <a href="{{ url_for('Healthy_Recipes') }}#salads">Salads</a>
+        </div>
+        <a href="{{ url_for('healthy_blogs') }}">BLOGS</a>
+        <a href="{{ url_for('Aboutus') }}">ABOUT US</a>
+        <a href="{{ url_for('JoinUs') }}">JOIN US</a>
+    </nav>
+  </header>
+  <div class="search-container">
+    <form action="#">
+      <input type="text" placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  </form>
+  </div>
+  <div class="container">
+    <h1>Health and Fitness Podcasts</h1>
+    <div class="row">
+      <div class="card">
+        <h2>
+          <img src="{{url_for('static', filename='image/podcast4.jpg')}}"alt="Podcast 4">
+          <a href="https://www.saje.com/podcast.html" target="_blank">Health and wellness </a>
+        </h2>
+        <p>Well Now, a podcast powered by Saje, features conversations with doctors, wellness experts, and healers of
+          all kinds, that help you find your way from basic health to empowered personal wellness. Fuelled by a desire
+          to help us all achieve health and wellness, Well Now is never prescriptive and always empathetic.</p>
+      </div>
+      <div class="card">
+        <h2>
+          <img src="{{url_for('static', filename='image/podcast5.png')}}" alt="Podcast 5">
+          <a href="https://podcasts.apple.com/us/podcast/the-art-of-being-well/id1539535133" target="_blank">The Art of
+            Being Well</a>
+        </h2>
+        <p>The Art Of Being Well is a fresh infusion of grace and lightness into wellness. Here we will explore exciting
+          ways for you to nurture your body, spirit, mind and relationships. From this place of using self-care as a
+          form of self-respect, you can discover your own metamorphosis.</p>
+      </div>
+
+      <div class="card">
+        <h2>
+          <img src="{{url_for('static', filename='image/podcast6.png')}}" alt="Podcast 6">
+          <a href="https://podcasts.apple.com/us/podcast/huberman-lab/id1545953110" target="_blank">Huberman Lab</a>
+        </h2>
+        <p>Dr. Andrew Huberman is a tenured Professor of Neurobiology and Ophthalmology at Stanford School of Medicine.
+          His laboratory studies neural regeneration, neuroplasticity, and brain states such as stress, focus, fear, and
+          optimal performance. For more than 20 years. </p>
+      </div>
+      <div class="card">
+        <h2>
+          <img src="{{url_for('static', filename='image/podcast7.png')}}" alt="Podcast 7">
+          <a href="https://podcasts.apple.com/us/podcast/on-purpose-with-jay-shetty/id1450994021" target="_blank">On
+            Purpose with Jay Shetty</a>
+        </h2>
+        <p>My name is Jay Shetty, and my purpose is to make wisdom go viral. I am fortunate to have fascinating
+          conversations with the most insightful people in the world, and on my podcast, I am sharing those conversation
+          with you. New episodes Mondays and Fridays. Listen anywhere you get your podcasts.</p>
+      </div>
+      <div class="card">
+        <h2>
+          <img src="{{url_for('static', filename='image/podcast8.png')}}" alt="Podcast 8">
+          <a href="https://podcasts.apple.com/us/podcast/ten-percent-happier-with-dan-harris/id1087147821"
+            target="_blank">Ten Percent Happier by Dan Harris </a>
+        </h2>
+        <p>Dan Harris is a fidgety, skeptical journalist who had a panic attack on live national television, which led
+          him to try something he otherwise never would have considered: meditation. He went on to write the bestselling
+          book, 10% Happier.</p>
+      </div>
+      <div class="card">
+        <h2>
+          <img src="{{url_for('static', filename='image/posdcast9.png')}}" alt="Podcast 9">
+          <a href="https://podcasts.apple.com/us/podcast/the-mindset-mentor/id1033048640" target="_blank">The Mind
+            Mentro by Rob Dial</a>
+        </h2>
+        <p>
+          In this podcast, Rob blends neurology, neurobiology, psychology, early childhood development, cognitive
+          behavioral therapy, If you're ready to take your life to the next level, are searching for more purpose or you
+          just need extra inspiration or motivation, tune in to The Mindset Mentor Podcast</p>
+      </div>
+
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2023 Health Forever. All rights reserved.</p>
+  </footer>
+  <script>
+    const form = document.querySelector('form');
+    const input = document.querySelector('input[type="text"]');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const searchTerm = input.value.trim();
+      if (searchTerm) {
+        alert(`Searching for "${searchTerm}"...`);
+        input.value = '';
+      }
+    });
+  </script>
+</body>
+
+</html>

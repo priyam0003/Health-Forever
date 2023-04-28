@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>body {
+        background-attachment: scroll;
+        background-color: whitesmoke;
+        background-size: auto;
+        background-repeat: repeat;
+        background-position: auto;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{{url_for('static', filename='image/img1.avif')}}");
+			
+
+      }
+  
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 15px;
+      }
+  
+      header h1 {
+        margin: 10;
+      }
+  
+      nav a {
+        color: #fff;
+        margin-right: 20px;
+        text-decoration: none;
+      }
+  
+      nav a:hover {
+        text-decoration: underline;
+      }
+  
+      
+      section {
+        margin-bottom: 40px;
+      }
+  
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+  
+      h1 {
+        text-align: auto;
+        margin-top: 50px;
+      }
+  
+      .search-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+      }
+  
+      input[type=text] {
+        padding: 10px;
+        margin-right: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+      }
+  
+      button[type=submit] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: grey;
+        color: #fff;
+        cursor: pointer;
+      }
+  
+      button[type=submit]:hover {
+        background-color: #3e8e41;
+      }
+  
+  
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+  
+      .card {
+        width: 30%;
+        margin-bottom: 50px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+      }
+  
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+      }
+  
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+  
+      .card h2 {
+        padding: 10px;
+        margin: 10px;
+        font-size: 1.5em;
+        text-align: center;
+      }
+  
+      .card p {
+        margin: 10px;
+        padding: 10px;
+        font-size: 1em;
+        line-height: 1.4em;
+        text-align: left;
+      }
+  
+      footer {
+        background-color: whitesmoke;
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+      }
+  
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+  
+      .dropbtn {
+        color: #fff;
+        background-color: #333;
+        border: none;
+        padding: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+  
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: #f2f2f2;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        padding: 12px 16px;
+      }
+  
+      .dropdown-content a {
+        color: #333;
+        padding: 6px 0;
+        display: block;
+      }
+  
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+  
+      .dropdown:hover .dropbtn {
+        background-color: #555;
+      }
+    </style></style>
+    <title>My Chart.js Chart</title>
+</head>
+<body>
+    <header>
+        <h1>ANALYTICS</h1>
+        <nav>
+          <a href="{{ url_for('index') }}">HOME</a>
+          <a href="{{ url_for('Health_podcast') }}">PODCAST</a>
+    
+          <div class="dropdown">
+            <button class="dropbtn">RECIPES &#9662;</button>
+            <div class="dropdown-content">
+              <a href="{{ url_for('Healthy_Recipes') }}#breakfast">Breakfast</a>
+    
+              <a href="{{ url_for('Healthy_Recipes') }}#salads">Salads</a>
+            </div>
+            <a href="{{ url_for('healthy_blogs') }}">BLOGS</a>
+            <a href="{{ url_for('Aboutus') }}">ABOUT US</a>
+            <a href="{{ url_for('JoinUs') }}">JOIN US</a>
+        </nav>
+      </header>
+    <p>
+        <h1>
+            Traffic coming into different sections of Recipes
+        </h1>
+        
+    </p>
+    <div class="container">
+      <canvas id="myChart1"></canvas>
+    </div>
+    <div>
+        
+    </div>
+    <script>
+        let myChart1 = document.getElementById('myChart1').getContext('2d');
+        
+        let barChart = new Chart(myChart1, {
+           type:'bar',
+           data:{
+            labels:['Breakfast', 'Desert', 'Snacks', 'Salads'],
+            datasets:[{
+                label:'Healthy Recipes Viewers',
+                data:[
+                    799246,
+                    567844,
+                    901266,
+                    345677
+                ],
+                backgroundColor:[
+                    'rgba(42, 40, 145, 0.8)',
+                    'rgba(42, 123, 145, 0.8)',
+                    'rgba(229, 123, 145, 0.79)',
+                    'rgba(229, 136, 57, 0.79)'
+                ],
+                borderWidth:1,
+                borderColor:'#777',
+                hoverBorderWidth:3,
+                hoverBorderColor:'#000'
+            }]
+           },
+           options:{
+            title:{
+                display:true,
+                text:'About Us',
+                fontSize:25
+
+            },
+            legend:{
+                position:'right'
+            }
+           } 
+        });
+    </script>
+<p>
+    <h1>
+        Historic data of the no. of subscribers from year 2015 to 2023
+    </h1>
+    
+</p>
+<div class="container">
+    <canvas id="myChart"></canvas>
+  </div>
+  <script>
+      let myChart = document.getElementById('myChart').getContext('2d');
+      
+      let barChart2 = new Chart(myChart, {
+         type:'pie',
+         data:{
+          labels:['2015', '2016', '2017', '2018','2019','2022','2023'],
+          datasets:[{
+              label:'Healthy Recipies',
+              data:[
+                  799246,
+                  567844,
+                  901266,
+                  345677,
+                  156789,
+                  236784,
+                  547632,
+              ],
+              backgroundColor:[
+                  'rgba(42, 40, 145, 0.8)',
+                  'rgba(42, 123, 145, 0.8)',
+                  'rgba(229, 123, 145, 0.79)',
+                  'rgba(229, 136, 57, 0.79)',
+                  'rgba(195, 112, 46, 0.8)',
+                  'rgba(165, 115, 23, 0.8)',
+                  'rgba(14, 3, 4, 0.8)'
+              ],
+              
+              borderWidth:1,
+              borderColor:'#777',
+              hoverBorderWidth:3,
+              hoverBorderColor:'#000'
+          }]
+         },
+         options:{
+          title:{
+              display:true,
+              text:'About Us',
+              fontSize:25
+
+          },
+          legend:{
+              position:'right'
+          }
+         } 
+      });
+      
+  </script>
+  <footer>
+    <h2>&copy; 2023 Health Forever. All rights reserved.</h2>
+  </footer>
+</body>
+</html> 

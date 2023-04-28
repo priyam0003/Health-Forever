@@ -1,0 +1,282 @@
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<title>HeathForever Join Us </title>
+	<style>
+		body {
+			background-size:cover;
+			background-image: url(./image/img1.avif);
+			background-color: white;
+			background-repeat: no-repeat;
+			background-position: center;
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+        header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		header h1 {
+			margin: 10;
+        }
+        nav a {
+			color: #fff;
+			margin-right: 20px;
+			text-decoration: none;
+		}
+
+		nav a:hover {
+			text-decoration: underline;
+		}
+
+		main {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+
+		section {
+			margin-bottom: 40px;
+		}
+        
+		form {
+			background-color: rgba(255, 255, 255, 0.8);
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			margin: 100px auto;
+			max-width: 500px;
+			padding: 40px;
+		}
+
+		h1 {
+			font-size: 32px;
+			font-weight: bold;
+			margin: 0 0 20px;
+			text-align: left;
+		}
+
+		input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"], select {
+			border: none;
+			border-radius: 5px;
+			display: block;
+			font-size: 16px;
+			margin-bottom: 20px;
+			padding: 10px;
+			width: 100%;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 10px;
+			width: 100%;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		.row::after {
+		  content: "";
+		  clear: both;
+		  display: table;
+		}
+
+		.col {
+		  float: left;
+		  width: 50%;
+
+		  /* Small screen styles */
+@media screen and (max-width: 600px) {
+	body {
+		background-position: center;
+		font-size: 14px;
+	}
+	header {
+		padding: 10px;
+	}
+	header h1 {
+		font-size: 24px;
+	}
+	nav a {
+		margin-right: 10px;
+	}
+	main {
+		padding: 5px;
+	}
+	form {
+		margin: 50px auto;
+		padding: 20px;
+	}
+	h1 {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
+	input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"], select {
+		font-size: 14px;
+		margin-bottom: 10px;
+		padding: 5px;
+	}
+	input[type="submit"] {
+		font-size: 14px;
+		padding: 5px;
+	}
+	.col {
+		width: 100%;
+	}
+}		}
+        footer {
+	    background-color: whitesmoke;
+	    padding: 1rem;
+	    text-align: center;
+	    font-size: 0.8rem;
+	    margin-top: 2rem;
+        }
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		  }
+		  
+		  .dropbtn {
+			color: #fff;
+			background-color: #333;
+			border: none;
+			padding: 20px;
+			font-size: 16px;
+			cursor: pointer;
+			margin-right: 20px;
+		  }
+		  
+		  .dropdown-content {
+			display: none;
+			position: absolute;
+			z-index: 1;
+			background-color: #f2f2f2;
+			min-width: 160px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 12px 16px;
+		  }
+		  
+		  .dropdown-content a {
+			color: #333;
+			padding: 6px 0;
+			display: block;
+		  }
+		  
+		  .dropdown:hover .dropdown-content {
+			display: block;
+		  }
+		  
+		  .dropdown:hover .dropbtn {
+			background-color: #555;
+		  }
+
+	</style>
+</head>
+<body>
+    <header>
+        <h1>JOIN US</h1>
+		<nav>
+			<a href="{{ url_for('index') }}">HOME</a>
+				  <a href="{{ url_for('Health_podcast') }}">PODCAST</a>
+				  
+			<div class="dropdown">
+			  <button class="dropbtn">RECIPES &#9662;</button>
+			  <div class="dropdown-content">
+				<a href="{{ url_for('Healthy_Recipes') }}#breakfast">Breakfast</a>
+				
+				<a href="{{ url_for('Healthy_Recipes') }}#salads">Salads</a>
+			  </div>
+				  <a href="{{ url_for('healthy_blogs') }}">BLOGS</a>
+				  <a href="{{ url_for('Aboutus') }}">ABOUT US</a> 
+				  <a href="{{ url_for('JoinUs') }}">JOIN US</a>
+		  </nav>
+    </header>
+	<form action="/submitForm" method="post">
+		<h1>Sign Up</h1>
+		<div class="row">
+			<div class="col">
+				<input type="text" name="firstname" placeholder="First Name" required>
+			</div>
+			<div class="col">
+				<input type="text" name="lastname" placeholder="Last Name" required>
+			</div>
+		</div>
+		<input type="tel" name="phone" placeholder="Phone Number" required>
+		<input type="date" name="dob" placeholder="Date of Birth" required>
+		<select name="gender" required>
+			<option value="" disabled selected>Gender</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+		<input type="text" name="address" placeholder="Email" required>
+        <input type="text" name="username" placeholder="Username" required>
+		<input type="password" name="password" placeholder="Password" required>
+		<input type="submit" value="Sign Up">
+	</form>
+	
+    <footer>
+		<p>&copy; 2023 Health Forever. All rights reserved.</p>
+	</footer>
+	
+	<!-- <script>
+		const form = document.querySelector('form');
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			alert('ThanksYou for join our team for a healtier life!');
+		})
+	</script> -->
+	<div class="container">
+		<canvas id="myChart"></canvas>
+	  </div>
+	  <script>
+		  let myChart = document.getElementById('myChart').getContext('2d');
+		  
+		  let barChart = new Chart(myChart, {
+			 type:'bar',
+			 data:{
+			  labels:['Breakfast', 'Desert', 'Snacks', 'Salads', 'ActiveUsers' , 'Subscribers' ],
+			  datasets:[{
+				  label:'Health Forever DataSet  ',
+				  data:[
+					  799246,
+					  567844,
+					  901266,
+					  345677,
+					  346788,
+					  456788
+				  ],
+				  backgroundColor:[
+					  'rgba(42, 40, 145, 0.8)',
+					  'rgba(42, 123, 145, 0.8)',
+					  'rgba(229, 123, 145, 0.79)',
+					  'rgba(229, 136, 57, 0.79)'
+				  ],
+				  borderWidth:1,
+				  borderColor:'#777',
+				  hoverBorderWidth:3,
+				  hoverBorderColor:'#000'
+			  }]
+			 },
+			 options:{
+			  title:{
+				  display:true,
+				  text:'About Us',
+				  fontSize:25
+  
+			  },
+			  legend:{
+				  position:'right'
+			  }
+			 } 
+		  });
+	  </script></body>
+</html>

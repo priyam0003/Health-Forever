@@ -1,0 +1,260 @@
+<html>
+<head>
+	<title>Healthy Recepies </title>
+	<style>
+		
+
+
+		body {
+            margin: 0;
+            background-image: url(./image/Recepies.jpg);
+			background-attachment: scroll;
+            background-color: whitesmoke;
+			font-family: Arial, sans-serif;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 20px;
+		}
+
+		header h1 {
+			margin: 10;
+			text-align: left;
+		}
+		nav a {
+			color: #fff;
+			margin-right: 20px;
+			text-decoration: none;
+		}
+
+		nav a:hover {
+			text-decoration: underline;
+		}
+
+		main {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+
+		section {
+			margin-bottom: 0px;
+		}
+
+		section h2 {
+			margin-top: 0;
+		}
+
+		h1 {
+			font-size: 32px;
+			font-weight: bold;
+			margin: 0 0 20px;
+			text-align: center;
+		}
+		
+		h2 {
+			font-size: 24px;
+			margin: 30px 0 10px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		
+		.category {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content:right;
+			margin: 50px auto;
+			max-width: 900px;
+			margin-top: 6rem;
+			padding: 1rem;
+		}
+		
+		.recipe {
+			background-color: whitesmoke;
+			border-radius: 10px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+			margin: 20px;
+			padding: 20px;
+			width: calc(30% - 40px);
+			justify-content:center;
+
+		}
+		
+		.recipe img {
+			display: block;
+			margin: auto;
+			max-width: 70%;
+		}
+		
+		.recipe h3 {
+			font-size: 20px;
+			margin: 10px 0 20px;
+			text-align: center;
+		}
+		
+		.recipe p {
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 0;
+			text-align: justify;
+		}
+		
+		.recipe a {
+			color: #4CAF50;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		
+		.recipe a:hover {
+			text-decoration: underline;
+		}
+
+        footer {
+	    background-color: whitesmoke;
+	    padding: 1rem;
+	    text-align: center;
+	    font-size: 0.8rem;
+	    margin-top: 2rem;
+        }
+		.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  color: #fff;
+  background-color: #333;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #f2f2f2;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 6px 0;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #555;
+}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Healthy Recipes</h1>
+		<nav>
+			<a href="{{ url_for('index') }}">HOME</a>
+            <a href="{{ url_for('Health_podcast') }}">PODCAST</a>
+            
+			<div class="dropdown">
+				<button class="dropbtn">RECIPES &#9662;</button>
+				<div class="dropdown-content">
+					<a href="{{ url_for('Healthy_Recipes') }}#breakfast">Breakfast</a>
+					
+					<a href="{{ url_for('Healthy_Recipes') }}#salads">Salads</a>
+				</div>
+            <a href="{{ url_for('healthy_blogs') }}">BLOGS</a>
+            <a href="{{ url_for('Aboutus') }}">ABOUT US</a> 
+            <a href="{{ url_for('JoinUs') }}">JOIN US</a>
+		</nav>
+	</header>
+</body>	
+	<div class="category" style="background-color: #f2f2f2;" >
+		<h2>Breakfast</h2>
+		<div class="recipe" id="breakfast">
+
+		    <img src="{{url_for('static', filename='image/eggs.png')}}" alt="Recipe 1">
+		    <h3>Veggie mix Omelette</h3>
+			<p>A veggie omelet makes a filling and nourishing meal, whether its for breakfast, lunch or dinner. Eggs and veggies complement one another through the nutrients they provide.</p>
+			<p><a href="omelette.html">View Recipe</a></p>
+			
+		</div>
+        <div class="recipe">
+			<img src="{{url_for('static', filename='image/oatmeal.png')}}" alt= "Recipe 2">
+			<h3>Pumpkin Oatmeal</h3>
+			<p>The health benefits of pumpkin include vitamins, antioxidants, fiber, folates, and more! Oatmeal is high in fiber and whole grains. This pumpkin oatmeal is poised to keep you full and nourished.</p>
+			<p><a href="oatmeal.html">View Recipe</a></p>
+		</div>
+	</div>
+	
+	
+        
+          <div class="category" style="background-color: #f2f2f2;">
+          <h2>Salads</h2>
+
+            <div class="recipe" id="salads">
+                <img src="{{url_for('static', filename='image/quinoasalad.png')}}">
+                <h3>Quinoa Salad</h3>
+                <p>Higher in protein than other grain, quinoa is so nutritious that NASA used to feed it to astronauts on space missions</p>
+                <a href="quinoa.html" >Recipe</a>
+              </div>
+              <div class="recipe">
+                <img src="{{url_for('static', filename='image/avocadosalad.png')}}">
+                <h3>Avocado Salad</h3>
+                <p>This Avocado Salad packed with nutrition is filling but still light and perfect for lunch or as a side dish for dinner.</p>
+                <a href="https://www.cookingclassy.com/avocado-salad/" target="_blank">Recipe</a>
+              </div>
+              <div class="recipe">
+                <img src="{{url_for('static', filename='image/cobbsalad.png')}}">
+                <h3>Cobb Salad</h3>
+                <p>This Cobb salad is true to the original with all the good stuff--chicken, eggs, bacon, avocado and a tangy dressing.</p>
+                <a href="cobb.html" >Recipe</a>
+              </div>
+              <div class="recipe">
+                <img src="{{url_for('static', filename='image/avocadoeggsalad.png')}}">
+                <h3>Egg and Avocado Salad</h3>
+                <p>Avocado is a delicious & nutritious addition to egg salad. Thanks to its creamy texture, can be enjoyed without mayo! </p>
+                <a href="eggavocado.html">Recipe</a>
+              </div>
+            </div>
+            <footer>
+			<p>&copy; 2023 Health Forever. All rights reserved.</p>
+			</footer>
+			<script>
+					
+				// JavaScript code goes here
+		
+				// Add a hover effect to the recipe cards
+				const recipeCards = document.querySelectorAll('.recipe');
+				recipeCards.forEach(card => {
+					card.addEventListener('mouseenter', () => {
+						card.style.boxShadow = '0 0 5px 2px #ccc';
+					});
+					card.addEventListener('mouseleave', () => {
+						card.style.boxShadow = 'none';
+					});
+				});
+		
+				// Scroll to the selected section when a dropdown item is clicked
+				const dropdownItems = document.querySelectorAll('.dropdown-content a');
+  				dropdownItems.forEach(item => {
+   				item.addEventListener('click', e => {
+      			e.preventDefault();
+      			const section = document.querySelector(item.getAttribute('href'));
+      			section.scrollIntoView({behavior: "smooth"});
+    });
+  });
+  			
+			</script>
+		</body>
+</html>  
